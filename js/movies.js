@@ -3,7 +3,7 @@ function getMovies() {
         {
             id:1,
             type:"now",
-            thumbnail:"../img/thumbnail/wonders.jpg",
+            thumbnail:"./img/thumbnail/wonders.jpg",
             src:"wonders",
             name:"Wonder",
             cast:"Robert De Niro, Katharine Hepburn",
@@ -13,7 +13,7 @@ function getMovies() {
         {
             id:2,
             type:"now",
-            thumbnail:"../img/thumbnail/barbecue.jpg",
+            thumbnail:"./img/thumbnail/barbecue.jpg",
             src:"barbecue",
             name:"Barbecue",
             cast:"Jack Nicholson, Meryl Streep",
@@ -23,7 +23,7 @@ function getMovies() {
         {
             id:3,
             type:"now",
-            thumbnail:"../img/thumbnail/nature.jpg",
+            thumbnail:"./img/thumbnail/nature.jpg",
             src:"nature",
             name:"Nature",
             cast:"Marlon Brando, Elizabeth Taylor",
@@ -33,7 +33,7 @@ function getMovies() {
         {
             id:4,
             type:"upcoming",
-            thumbnail:"../img/thumbnail/casablanca.png",
+            thumbnail:"./img/thumbnail/casablanca.png",
             src:"casablanca-s",
             name:"Casablanca",
             cast:"Denzel Washington, Ingrid Bergman",
@@ -43,7 +43,7 @@ function getMovies() {
         {
             id:5,
             type:"upcoming",
-            thumbnail:"../img/thumbnail/wildlife.jpg",
+            thumbnail:"./img/thumbnail/wildlife.jpg",
             src:"wildlife",
             name:"Wildlife",
             cast:"Humphrey Bogart, Bette Davis",
@@ -53,7 +53,7 @@ function getMovies() {
         {
             id:6,
             type:"upcoming",
-            thumbnail:"../img/thumbnail/chocolate.jpg",
+            thumbnail:"./img/thumbnail/chocolate.jpg",
             src:"chocolate",
             name:"Chocolate",
             cast:"Daniel Day-Lewis, Cate Blanchett",
