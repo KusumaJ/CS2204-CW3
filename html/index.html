@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kusuma Jaipiam">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    <script src="../js/movies.js" type="text/javascript"></script>
+    <script>
+        var nowmov = [];
+        var upmov = [];
+        for (let i = 0; i < getMovies().length; i++) {
+            if (getMovies()[i].type == "now") {
+                nowmov.push(getMovies()[i]);
+            }
+            else {
+                upmov.push(getMovies()[i]);
+            }
+        }
+        function movieinfo(type, num) {
+            return (
+                '<div class="movie">' +
+                '<img src="' + type[num].thumbnail + '"alt="' + type[num].name + '" onclick = changevid("' + type[num].src + '");>' +
+                '<div class="txt">' + '<h4>' + type[num].name + '</h4>'
+                + '<p>Cast: ' + type[num].cast + '</p>'
+                + '<p>Director: ' + type[num].director + '</p>'
+                + '<p>Duration: ' + type[num].duration + ' mins</p></div></div>');
+        }
+        function changevid(src) {
+            v = document.getElementById("v");
+            v.pause();
+            s = document.querySelectorAll('#v source');
+            s[0].src = "http://courses.cs.cityu.edu.hk/cs2204/video/" + src + ".ogg";
+            s[1].src = "http://courses.cs.cityu.edu.hk/cs2204/video/" + src + ".mp4";
+            v.load();
+            document.getElementById('moviename').innerHTML = src;
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // video slideshow
+            let mov = nowmov.concat(upmov);
+            let count = 1;
+            document.getElementsByTagName('video')[0].onended = function (e) {
+                v = document.getElementById("v");
+                if (count == mov.length) count = 0;
+                s = document.querySelectorAll('#v source');
+                s[0].src = "http://courses.cs.cityu.edu.hk/cs2204/video/" + mov[count].src + ".ogg";
+                s[1].src = "http://courses.cs.cityu.edu.hk/cs2204/video/" + mov[count].src + ".mp4";
+                document.getElementById('moviename').innerHTML = mov[count].name;
+                count++;
+                setTimeout( ()=> { v.load();}, 2 * 1000);
+            }
+            document.getElementById('nowshowing').innerHTML = document.getElementById('nowshowing').innerHTML
+                + movieinfo(nowmov, 0)
+                + movieinfo(nowmov, 1)
+                + movieinfo(nowmov, 2);
+            document.getElementById('upcoming').innerHTML = document.getElementById('upcoming').innerHTML
+                + movieinfo(upmov, 0)
+                + movieinfo(upmov, 1)
+                + movieinfo(upmov, 2);
+        });
+    </script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="./ticket.html">Ticket</a></li>
+            <li><a href="./nowshowing.html">Now Showing</a></li>
+            <li>Home</li>
+        </ul>
+    </nav>
+    <header>
+        <img src="../img/other/logonobg.png" alt="Logo" id="logo">
+        <h3>Your cinema</h3>
+    </header>
+
+    <section>
+        <div id="movieexample">
+            <h3>2022 Hot Movie: <span id="moviename">Wonder</span></h3>
+            <video id="v" controls="controls" autoplay>
+                <source id="examplevidogg" type="video/ogg"
+                    src="http://courses.cs.cityu.edu.hk/cs2204/video/wonders.ogg">
+                <source id="examplevidmp4" type="video/mp4"
+                    src="http://courses.cs.cityu.edu.hk/cs2204/video/wonders.ogg">
+                <h2>Your browser does not support this video format</h2>
+            </video>
+        </div>
+
+        <div id="nowshowing">
+            <h3><a href="./nowshowing.html">Now Showing</a></h3>
+        </div>
+        <div id="upcoming">
+            <h3>Up Coming</h3>
+        </div>
+
+    </section>
+    <footer>
+        <p>
+            @Copyright of resources belongs to corresponding copyright owners</p>
+        <p> - fair use for educational purpose
+            | Home
+            | <a href="./design.html">Design</a>
+        </p>
+    </footer>
+</body>
+
+</html>

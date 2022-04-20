@@ -1,0 +1,300 @@
+body{
+    /* font-family:'Times New Roman, Times, serif'; */
+    font-family: cursive;
+}
+
+footer{
+    margin-top: 1%;
+    text-align: center;
+    border-top-style: solid;
+    border-width: thin;
+    border-color: grey;
+    padding-top: 1%;
+}
+
+@keyframes logoanimation { 
+    0%   {left:0px; top:0px;} 
+    50%  {left:500%; top:0px;} 
+    100%  {left:0px; top:0px;} 
+} 
+
+header img { 
+    /* margin: auto; */
+    width: 120px; 
+    /* height: auto; */
+    position: relative; 
+    background-color:#FFC5BF ;
+    border-radius: 50%;
+    padding: 5%;
+    animation-name: logoanimation; 
+    animation-duration: 3s; 
+}
+
+header{
+    position:relative;
+    background-color: #FFC5BF   ;
+    border-radius: 10%;
+    width:fit-content;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+header h3{
+    text-align: center;
+    font-family:fantasy;
+    letter-spacing: 0.1em;
+    font-weight: lighter;
+}
+
+nav {
+    font-weight: bold;
+    right: 0%;
+    top: 0%;
+    position: fixed;
+    width: 100%;
+    opacity: 0.9;
+    background-color: #FFAEA5 ;
+    color: rgb(165, 39, 165);
+}
+nav ul li{
+    display: inline;
+    float: right;
+    padding-right: 5%;
+    padding-bottom: 1%;
+}
+nav a, footer a{
+    color:rgb(85, 42, 83);
+}
+
+section{
+    padding-left: 1%;
+}
+
+body{
+    background-image: url("../img/other/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+a{
+    text-decoration: none;
+}
+
+p{
+    margin: 0%;
+}
+div h3{
+    text-align: center;
+    letter-spacing: 2px;
+}
+span{
+    font-weight: bold;
+    color: #34666F;
+    text-transform: uppercase;
+}
+
+/* home page */
+#movieexample, #booklocation{
+    background-color: aliceblue;
+    width: 50%;
+    padding: 1%;
+    margin: auto;
+    border-radius: 10%;
+    box-shadow: 10px 10px 5px lightblue;
+}   
+video {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+div .movie img {
+    float: left;
+    margin-bottom: 2%;
+    height: 100px;
+    cursor: pointer;
+    padding-right: 2%;
+} 
+div .movie{
+    width: 33%;
+    display: inline-block;
+    background: linear-gradient(to left, rgb(231, 244, 255,0.2) 20%  , rgb(231, 244, 255) 80%);
+    padding-bottom: 1%;
+}
+div .txt{
+    clear: right;
+    text-align: right;
+    padding-right: 10%;
+}
+#nowshowing, #upcoming{
+    padding: 1%;
+    margin: 1%;
+}
+#nowshowing a{
+    color: black;
+    text-decoration: none;
+}
+
+/* ticket page */
+#screen{
+    background-color: grey;
+}
+#seatplan .row, #seatplan tr{
+    background-color: blanchedalmond;
+}
+#seatplan .row:hover{
+    background-color: blanchedalmond;
+    cursor: default;
+}
+#seatplan td{
+    background-color: gainsboro;
+}
+#seatplan td:hover{
+    background-color: #FFC5BF;
+    cursor: pointer;
+}
+#seatplan td, #seatplan th{
+    border: 1px solid gold;
+    text-align: center;
+}
+#seatplan{
+    margin: auto;
+    width: 70%;
+}
+#confirmbook input{
+    width: 100%;
+    background-color: #7daa7f;
+    color: white;
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1%;
+    font-size:medium;
+}
+fieldset {
+    background-color: #eeeeee83;
+}
+#confirmbook legend{
+    text-transform: uppercase;
+    background-color: grey;
+    padding: 0.5%;
+    color: white;
+}
+fieldset p{
+    margin-top: 0.5%;
+    text-align: center;
+}
+
+/* now showing page */
+#booklocation{
+    text-align: center;
+    padding-bottom: 2%;
+    width: fit-content;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.bookmovie{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    /* padding: 6%; */
+    margin-right: 6%;
+    margin-left: 6%;
+    /* background: linear-gradient(to right, rgb(212, 115, 115,0.2) 20%  , rgb(212, 115, 115) 80%); */
+}
+.bookmovie img {
+    margin-bottom: 2%;
+    height: 130px;
+    cursor: pointer;
+} 
+/* .bookmovie img :hover{
+    width: 120px;
+    height: auto;
+} */
+.bookmovie input{
+    margin: 3%;
+    background-color:aliceblue;
+}
+.bookmovie select{
+    background-color:aliceblue;
+
+}
+.bookmovie input[type="submit"],.bookmovie input[type="reset"]{
+    /* width: 100%; */
+    background-color:darksalmon;
+    color: beige;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.bookmovie input[type="reset"]{
+    cursor: default;
+}
+#booknowshowing{
+    margin-top: 1%;
+    background-color: rgba(220, 220, 220, 0.39);
+}
+.location img{
+    width: 50%;
+    /* height: 3%; */
+    float: left;
+    clear: left;
+}
+.location h4, .location p{
+    width: 50%;
+    height: auto;
+    float: right;
+}
+.location h4{
+    border-bottom: 5px solid plum;
+    border-bottom-style: double;
+    text-align: right;
+    font-size: larger;
+
+}
+.location{
+    display: inline-block;
+    margin-bottom: 1%;
+    
+    text-align: right;
+}
+#locations h3{
+    margin-bottom: 2%;
+    text-transform: uppercase; 
+}
+#locations{
+    /* background-color: rgba(220, 220, 220, 0.39); */
+    padding: 1%;
+}
+/* print page */
+.ticket{
+    width: max-content;
+    text-align: center;
+    padding: 3%;
+    margin: auto;
+    margin-bottom: 2%;
+    border-style: solid;
+    border-width: thin;
+    border-color: grey;
+    background-color: rgba(220, 220, 220, 0.39);
+}
+#print{
+    text-align: center;
+    font-size: x-large;
+}
+
+/* design page */
+#layout img{
+    width:50%;
+    float:left;
+    padding-right: 1%;
+}
+#layout{
+    display: inline;
+    float: right;
+    padding: 1%;
+    padding-left: 10%;  
+}

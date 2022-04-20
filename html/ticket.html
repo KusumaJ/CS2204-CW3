@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kusuma Jaipiam">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    <script type="text/javascript" src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+    <script type="text/javascript" src="../js/movies.js"></script>
+    <script>
+        function getVar(j) {
+          var query = window.location.search.substring(1);
+          var vars = query.split("&");
+          var ans = vars[j].split("=")[1];
+          ans = ans.replaceAll('+',' ').replaceAll('%2C',',').replace('%3A',':');
+          return ans;
+        }
+        let movieList = getMovies();
+        function getMovieId(name){ 
+            for(var i=0;i<movieList.length;i++){
+                if(movieList[i].name==name){
+                    return movieList[i].id;
+                    break;
+                }
+            }
+        }
+        let CineMasList = getCinemas();
+        function getHouse(){
+            for (var i=0;i<CineMasList.length;i++){
+                // check cinema name
+                if (CineMasList[i].branchName == getVar(2)){
+                    let cinemasMovie = CineMasList[i].movies;
+                    for(var j=0;j<cinemasMovie.length;j++){
+                        // check movie id
+                        if(cinemasMovie[j].id==getMovieId(getVar(0))){
+                            let show = cinemasMovie[j].shows;
+                            for(var k=0;k<show.length;k++){
+                                // check datetime
+                                if(show[k].datetime==getVar(1)){
+                                    return show[k].house;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        function genTable(){
+            const letter = ['A','B','C','D']
+            var content ="";
+                    for (let i=0;i<4;i++){
+                        content+='<tr><td class="row">'+letter[i]+'</td>';
+                        for (let j=1;j<6;j++){
+                            content+='<td id="'+letter[i]+j+'"+ onclick = clickFunc("'+letter[i]+j+'")>'
+                                +letter[i]+j+'</td>';
+                        }
+                        content+='</tr>';
+                    }
+            return content;
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('confirmbook').style.display = "none";
+
+            document.getElementById('location').value = getVar(2);
+            document.getElementById('time').value = getVar(1);
+            document.getElementById('house').value = getHouse();
+            document.getElementById('moviename').value = getVar(0);
+
+            document.querySelector('#movdetail').innerHTML += getVar(0);
+            document.querySelector('#datedetail').innerHTML += getVar(1);
+            document.querySelector('#theatredetail').innerHTML += getVar(2);
+            document.querySelector('#housedetail').innerHTML += getHouse();
+            document.querySelector('tbody').innerHTML = genTable();
+        });
+        var cnt = 0;
+        var seatrecord = [];
+        function clickFunc(id) {
+            if(!seatrecord.includes(id)){
+                cnt++;
+                seatrecord.push(id);
+                document.getElementById('seat').innerHTML = 'Seats: '+ seatrecord;
+                if(document.getElementById('confirmbook').style.display == "none"){
+                    document.getElementById('confirmbook').style.display = "block";
+                    document.getElementById('countseat').innerHTML = 'Total: 1 regular seat';
+                }else{
+                    document.getElementById('countseat').innerHTML = 'Total: '+cnt+' regular seats';
+                }
+                document.getElementById('seatrec').value = seatrecord;
+                document.getElementById(id).style.backgroundColor = "#FFC5BF";
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>Ticket</li>
+            <li><a href="./nowshowing.html">Now Showing</a></li>
+            <li><a href="./index.html">Home</a></li>
+        </ul>
+    </nav>
+    <header>
+        <img src="../img/other/logonobg.png" alt="Logo" id="logo">
+        <h3>Your cinema</h3>
+    </header>
+    <section>
+        
+        <h3 id="movdetail">Movie: </h3>
+        <h3 id="datedetail">Date and Time: </h3>
+        <h3 id="theatredetail">Theatre location: </h3>
+        <h3 id="housedetail">House: </h3>
+        <table id="seatplan">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="5" id="screen">Screen</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <form id="confirmbook" method="get" action="./print.html" >
+            <fieldset>
+                <legend> Booking Details </legend>	
+                <p id="seat"></p>
+                <p id="countseat"></p>
+                <input type="hidden" id="location" name="location">
+                <input type="hidden" id="time" name="time">
+                <input type="hidden" id="house" name="house">
+                <input type="hidden" id="moviename" name="moviename">
+                <input type="hidden" id="seatrec" name="seatrec">
+                <input type="submit" value="Confirm"> 
+            </fieldset>
+        </form>
+    </section>
+    <footer>
+        <p>
+            @Copyright of resources belongs to corresponding copyright owners</p>
+        <p> - fair use for educational purpose
+            | <a href="./index.html">Home</a>
+            | <a href="./design.html">Design</a>
+        </p>
+    </footer>
+</body>
+</html>

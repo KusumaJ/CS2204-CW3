@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kusuma Jaipiam">
+    <title>NowShowing</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    <script type="text/javascript" src="../js/movies.js"></script>
+    <script type="text/javascript" src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+    <script>
+        var nowmov = [];
+        var upmov = [];
+        for (let i = 0; i < getMovies().length; i++) {
+            if (getMovies()[i].type == "now") {
+                nowmov.push(getMovies()[i]);
+            }
+            else {
+                upmov.push(getMovies()[i]);
+            }
+        }
+        let movlist = getMovies();
+        function getMovieName(movid){
+            for (let i=0;i<movlist.length;i++) {
+                if(movlist[i].id==movid){
+                    return movlist[i];
+                    break;
+                }
+            }
+        }
+        var first = true;
+        document.addEventListener('DOMContentLoaded', contentAllNowMov = ()=>{
+        //location
+        if(first){
+            first = false;
+            var cin = getCinemas();
+            for(let i=0;i<cin.length;i++){
+                document.querySelector('#location').innerHTML+=("<option value=\"" + cin[i].branchName + "\" >"+cin[i].branchName+"</option>");
+            }
+        }
+        let value = document.getElementById('location');   
+        function init(){
+            var theatre = value.options[value.selectedIndex].value;
+            for (let i=0;i<getCinemas().length;i++) {
+                if(getCinemas()[i].branchName==theatre){
+                    let movieData = getCinemas()[i].movies;
+                    return movieData;
+                    break;
+                }
+            }
+        }
+        function movieContent(){
+            var content = '';
+            for (let i=0;i<nowmov.length;i++){
+                content += '<div class="bookmovie">'+
+                    '<img src="'+nowmov[i].thumbnail+'"alt='+nowmov[i].name+'>'+
+                    '<form id="ticketbook" method="get" action="./ticket.html">'+
+                    '<input type="text" id="'+nowmov[i].name+'" name="moviename" value="'+nowmov[i].name+'">'+
+                    '<label for="time">Timeslots:</label>'+'<select id="time" name="time">'
+                var movieData = init();
+                var check=false;
+                for (let j=0;j<movieData.length;j++){ if(nowmov[i].id==movieData[j].id) {
+                    check = true;
+                    var shows = movieData[j].shows;
+                    for(let k=0;k<shows.length;k++){
+                        content += '<option value="'+shows[k].datetime+'">'+shows[k].datetime+'</option>';
+                    } 
+                } 
+                }
+                if(check){
+                    content +='</select><input type="submit" value="Buy Now">'
+                    + '<input type="hidden" id="'+value.options[value.selectedIndex].value+'" name="location" value="'+value.options[value.selectedIndex].value+'">'
+                    +'</form></div>';  
+                }else{
+                    content+='<option value="NOT AVAILABLE">NOT AVAILABLE</option></select><input type="reset" value="Not Available"></form></div>';
+                }  
+            }
+            document.querySelector('#booknowshowing').innerHTML = content;
+        }
+        movieContent();
+        }
+        );
+    </script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="./ticket.html">Ticket</a></li>
+            <li>Now Showing</li>
+            <li><a href="./index.html">Home</a></li>
+        </ul>
+    </nav>
+    <header>
+        <img src="../img/other/logonobg.png" alt="Logo" id="logo">
+        <h3>Your cinema</h3>
+    </header>
+    <section>
+        <form id="booklocation" name="booklocation" method="get" action="./ticket.html">
+            <p></p>
+                <h3>Now Showing Movies</h3>
+            <p>
+                <label for="location">Locations:</label>
+                <select id="location" onchange="contentAllNowMov()"></select>
+            </p>
+        </form>
+        <div id="booknowshowing"></div>
+        <div id="locations">
+            <h3>Our locations</h3>
+            <div class="location">
+                <img src="../img/map/klt.jpg" alt="KowloonTongMap">
+
+                <h4>City Cinema - Kowloon Tong</h4>
+                <p>Festival Walk</p>
+                <p>80 Tat Chee Ave, Kowloon Tong, Hong Kong</p>
+
+            </div>
+            <div class="location">
+                <img src="../img/map/tst.jpg" alt="TSTMap">
+                <h4>City Cinema - Mong Kok</h4>
+                <p>iSquare</p>
+                <p>63 Nathan Road, Tsim Sha Tsui, Kowloon</p>
+
+            </div>
+            <div class="location">
+                <img src="../img/map/tpo.jpg" alt="TaiPoMap">
+                <h4>City Cinema - Central</h4>
+                <p>Uptown Plaza</p>
+                <p>Hong Kong, Nam Wan Road, 9號HK Hong Kong Island十少秋竹</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>
+            @Copyright of resources belongs to corresponding copyright owners<br> - fair use for educational purpose
+            | <a href="./index.html">Home</a>
+            | <a href="./design.html">Design</a>
+        </p>
+    </footer>
+</body>
+
+</html>

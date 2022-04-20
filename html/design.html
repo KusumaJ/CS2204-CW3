@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kusuma Jaipiam">
+    <title>Design</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+</head>
+
+<body>
+    <nav>
+        <ul>
+
+            <li><a href="./ticket.html">Ticket</a></li>
+            <li><a href="./nowshowing.html">Now Showing</a></li>
+            <li><a href="./index.html">Home</a></li>
+        </ul>
+    </nav>
+    <header>
+        <img src="../img/other/logonobg.png" alt="Logo" id="logo">
+        <h3>Your cinema</h3>
+    </header>
+    <section>
+        <h2>Description for CW3</h2>
+
+        <h3>For the <span>Event Handlers</span></h3>
+        <p>I set up in HTML on </p>
+        <ul>
+            <li><span><a href="ticket.html">ticket</a> </span>page where seats are selected </li>
+            <li><span><a href="index.html">index</a></span> page where video should be changed</li>
+            ps.though those are written in script, they're inside the html tag
+        </ul>
+        <p>I set up in JS in <span>every single page</span> using the document.addEventListener('DOMContentLoaded',..some function..)
+            because a lot of scripts should be run after page is loaded and I don't want to put the script in the last
+            line
+        </p>
+
+        <h3>For the <a href="./index.html">Index</a> page: mainly divided into 3 division</h3>
+        <ul>
+            <li>I use js to generate information related to the movies (data given in separated js file <a href="../js/movies.js">movies.js</a>)</li>
+            <li>I use function changevid to deal with the video changes due to user'clicks </li>
+        </ul>
+
+        <h3>For the <a href="./nowshowing.html">Now Showing</a></h3>
+        <ul>
+            <li>I use js to generate information related to the movies plus the cinemas (data given in separated js file <a href="../js/movies.js">movies.js</a> and also
+                <a href ="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js">cinemas.js</a>)</li>
+            <li>I use js to instantly change the details of the available movies when new cinema is selected</li>
+            <li>Some parts of the script are also written to provide detail for the next page (via form; get method)</li>
+        </ul>
+
+        <h3>For the <a href="./ticket.html">Ticket</a> page</h3>
+        <ul>
+            <li>I retrieve information from the url. Then, keep and make use of it in a proper form</li>
+            <li>I use function clickFunc() to deal with the events that user select the seat (show info/ reserve the seat by color)</li>
+            <li>Some parts of the script are also written to provide detail for the next page (via form; get method)</li>
+        </ul>
+
+        <h3>For the <a href="./print.html">Print</a> page</h3>
+        <ul>
+            <li>I retrieve information from the url and make use of it in a proper form</li>
+            <li>I use js to generate the html of each ticket to be printed</li>
+        </ul>
+    
+        <hr>
+        <div id="layout">
+            <img src="../img/other/layout.JPG" alt="Layout">
+            <div class="txt">
+                <h2>Sketch Diagram</h2>
+                <p>For the <span>header</span>, I use the animation to move the logo above the site name under the given
+                    condition<br>
+                    (I give some styles to the logo img because when it moves, it will have the color bg as the real bg
+                    is transparent)</p>
+                <p>For the <span>menu</span>, I fix it at the top and disable the link of the current page</p>
+                <p>For the <span>footer</span>, I put text in the center. Also, I use border top to make the section
+                    clearer</p>
+                <p>I also use the <span>&lt;section&gt;</span> in order to arrange the content part</p>
+            </div>
+        </div>
+
+        <h3>For the <span>Stylesheet</span></h3>
+        <p>I use 2 sheets: one for the whole sites [style.css] and one specifically for the printing [mediaprint.css].
+        </p>
+        <p>Styles are grouped on every page depending on necessity as I try not to overuse the id and class selection.
+            Detail of the whole theme is given above. Other specific detail for each page will be given below.</p>
+
+        <h3>For the <span>CSS3 features</span>: position(line) mentioned are on style.css </h3>
+        <ul>
+            <li><span>Rounded corners</span> are used several times: header image(line 27), header (line 36),
+                #movieexample on homepage
+                and #booklocation on nowshowing page (line 101), #confirmbook input on ticket page (line 170),
+                submit button on nowshowing page (line 230) </li>
+            <li><span>Gradient color</span> is also used here for the background of the division of the movie on
+                homepage (line 121) to make the division clear and pretty but not messy</li>
+        </ul>
+
+        <h3>For the <a href="./index.html">Home</a> page: mainly divided into 3 division</h3>
+        <ol>
+            <li><span>movieexample</span> here contains videos</li>
+            <li><span>nowshowing</span> consists of 3 movies with image and text. I include a link to the nowshowing
+                page as it will suggest the user to look further into detail about booking</li>
+            <li><span>upcoming</span> goes the same way with nowshoeing but there is no link to another page</li>
+        </ol>
+
+        <h3>For the <a href="./nowshowing.html">Now Showing</a> page: mainly divided into 3 division</h3>
+        <ol>
+            <li><span>booklocation form</span> allows user to choose location. Later on, it can be actually used with
+                the help of javascript</li>
+            <li><span>booknowshowing</span> consists of 3 movies' form with timeslots to book</li>
+            <li><span>locations</span> contains 3 locations (map image plus address)</li>
+        </ol>
+
+        <h3>For the <a href="./ticket.html">Ticket</a> page</h3>
+        <ol>
+            <li>Headings: here all information are important so I use h3 tags alone for all</li>
+            <li><span>seatplan</span> with table visualizes the plan of the theatre well</li>
+            <li><span>confirmbook</span> using form</li>
+        </ol>
+
+        <h3>For the <a href="./print.html">Print</a> page</h3>
+        <p>Simple divs are used only to separate each ticket apart</p>
+        <p>Distinct stylesheet is used for the print purpose to hide header, footer, and other unwanted information as
+            well as make one ticket stay in one single page</p>
+
+        <h3>Acknowledgement</h3>
+        <p>
+            I refer to the names of the famous directors from this website called <a
+                href="https://parade.com/1048720/maramovies/best-directors/">Parade</a><br>
+            I refer to the names of famous actors/ actresses from this website called <a
+                href="https://www.imdb.com/list/ls058011111/">IMDB</a><br>
+            I used the real locations of 3 famous malls: festival walk, iSquare, and Uptown Plaza with the photos from
+            google maps.
+
+        </p>
+
+    </section>
+    <footer>
+        <p>
+            @Copyright of resources belongs to corresponding copyright owners<br> - fair use for educational purpose
+            | <a href="./index.html">Home</a>
+            | <a href="./design.html">Design</a>
+        </p>
+    </footer>
+</body>
+
+</html>
